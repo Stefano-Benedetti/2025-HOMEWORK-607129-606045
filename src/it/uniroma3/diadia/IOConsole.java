@@ -7,12 +7,13 @@ import java.util.Scanner;
  * @version 1.8
  */
 
-public class IOConsole {
+public class IOConsole implements IO {
 	
 	/**
 	 * Mostra in output la stringa passata
 	 * @param msg stringa da mostrare in output
 	 */
+	@Override
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
 	}
@@ -21,6 +22,7 @@ public class IOConsole {
 	 * Mostra in output la stringa passata, ma senza l'invio
 	 * @param msg stringa da mostrare in output
 	 */
+	@Override
 	public void mostraMessaggioNoInvio(String msg) {
 		System.out.print(msg);
 	}
@@ -29,6 +31,7 @@ public class IOConsole {
 	 * Legge una riga in input
 	 * @return riga stringa letta
 	 */
+	@Override
 	public String leggiRiga() {
 		Scanner scannerDiLinee = new Scanner(System.in);
 		String riga = scannerDiLinee.nextLine();

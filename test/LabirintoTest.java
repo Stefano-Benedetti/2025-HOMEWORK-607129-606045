@@ -13,29 +13,29 @@ class LabirintoTest {
 	Stanza stanzaCorrente;
 	
 	@BeforeEach
-	public void SetUp() {
+	void SetUp() {
 		labirinto = new Labirinto();
 	}
 
 	//test di creaStanze()
 	
 	@Test
-	public void VerificaStanzaIniziale() {
+	void VerificaStanzaIniziale() {
 		assertEquals("Atrio",labirinto.getStanzaIniziale().getNome());
 	}
 	
 	@Test
-	public void VerificaStanzaFinale() {
+	void VerificaStanzaFinale() {
 		assertEquals("Biblioteca",labirinto.getStanzaFinale().getNome());
 	}
 	
 	@Test
-	public void VerificaOssoInAtrio() {
+	void VerificaOssoInAtrio() {
 		assertTrue(labirinto.getStanzaIniziale().hasAttrezzo("osso"));
 	}
 		
 	@Test
-	public void VerificaNordDiAtrio() {
+	void VerificaNordDiAtrio() {
 		assertEquals("Biblioteca",labirinto.getStanzaIniziale().getStanzaAdiacente("nord").getNome());
 	}
 }

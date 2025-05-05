@@ -24,7 +24,7 @@ class BorsaTest {
 	Attrezzo pesante;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		borsa = new Borsa();
 		attrezzo0 = new Attrezzo("pala",1);
 		attrezzo1 = new Attrezzo("palla",1);
@@ -53,24 +53,24 @@ class BorsaTest {
 	
 	//test di removeAttrezzo()
 	@Test
-	public void testRimossoAttrezzoEsistenteDaBorsa() {
+	void testRimossoAttrezzoEsistenteDaBorsa() {
 		assertTrue(borsa.removeAttrezzo("pala"));
 	}
 	
 	@Test
-	public void testRimossoAttrezzoNonEsistenteDaBorsa() {
+	void testRimossoAttrezzoNonEsistenteDaBorsa() {
 		assertFalse(borsa.removeAttrezzo("inesistente"));
 	}
 	
 	
 	//test di addAttrezzo, casi particolari
 	@Test
-	public void testRaggiuntoNumMaxDiAttrezzi() {
+	void testRaggiuntoNumMaxDiAttrezzi() {
 		assertFalse(borsa.addAttrezzo(ditroppo));
 	}
 	
 	@Test
-	public void testRaggiuntoPesoMaxBorsa() {
+	void testRaggiuntoPesoMaxBorsa() {
 		borsa.removeAttrezzo("pelle");
 		assertFalse(borsa.addAttrezzo(pesante));
 	}
@@ -78,31 +78,31 @@ class BorsaTest {
 	
 	//test di getPeso()
 	@Test
-	public void testGetPeso() {
+	void testGetPeso() {
 		assertEquals(10, borsa.getPeso());
 	}
 	
 	
 	//test di getAttrezzo()
 	@Test
-	public void testGetAttrezzoEsistente() {
+	void testGetAttrezzoEsistente() {
 		assertEquals("pala", borsa.getAttrezzo("pala").getNome());
 	}
 	
 	@Test
-	public void testGetAttrezzoNonEsistente() {
+	void testGetAttrezzoNonEsistente() {
 		assertNull(borsa.getAttrezzo("inesistente"));
 	}
 	
 	
 	//test di isEmpty()
 	@Test
-	public void testBorsaNonVuota() {
+	void testBorsaNonVuota() {
 		assertFalse(borsa.isEmpty());
 	}
 	
 	@Test
-	public void testBorsaVuota() {
+	void testBorsaVuota() {
 		borsa.removeAttrezzo("pala");
 		borsa.removeAttrezzo("palla");
 		borsa.removeAttrezzo("palle");

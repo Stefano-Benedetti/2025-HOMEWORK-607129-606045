@@ -12,7 +12,7 @@ class StanzaTest {
 	private Attrezzo spada;
 	
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		this.a=new Stanza("a");
 		this.b=new Stanza("b");
 		this.a.impostaStanzaAdiacente("nord", this.b);
@@ -23,17 +23,17 @@ class StanzaTest {
 	
 	//test di impostaStanzaAdiacente()
 	@Test
-	public void stanzaNordDeveEssereb() {
+	void stanzaNordDeveEssereb() {
 		assertEquals(this.b, this.a.getStanzaAdiacente("nord"));
 	}
 	
 	@Test
-	public void stanzaSudDeveEssereNull() {
+	void stanzaSudDeveEssereNull() {
 		assertNull(this.a.getStanzaAdiacente("sud"));
 	}
 	
 	@Test
-	public void modificandoLaStanzaNordDeveRestituireLaNuovaStanzaNord() {
+	void modificandoLaStanzaNordDeveRestituireLaNuovaStanzaNord() {
 		Stanza c=new Stanza("c");
 		a.impostaStanzaAdiacente("nord", c);
 		assertEquals(c, this.a.getStanzaAdiacente("nord"));
@@ -42,12 +42,12 @@ class StanzaTest {
 	
 	//test di addAttrezzo()
 	@Test
-	public void deveEsserciSpazioPerAttrezzoDeveTornareTrue() {
+	void deveEsserciSpazioPerAttrezzoDeveTornareTrue() {
 		assertTrue(this.a.addAttrezzo(spada));
 	}
 	
 	@Test
-	public void ArrayAttrezziPienoDeveTornareFalse() {
+	void ArrayAttrezziPienoDeveTornareFalse() {
 		for(int i=0; i<10; i++)
 			this.a.addAttrezzo(new Attrezzo("spada", 7));
 		assertFalse(this.a.addAttrezzo(new Attrezzo("ascia", 8)));
@@ -56,17 +56,17 @@ class StanzaTest {
 	
 	//test di toString()
 	@Test
-	public void verificoToStringDiA() {
+	void verificoToStringDiA() {
 		assertEquals("a\nUscite:  nord\nAttrezzi nella stanza: ", this.a.toString());
 	}
 	
 	@Test
-	public void verificoToStringDiB() {
+	void verificoToStringDiB() {
 		assertEquals("b\nUscite: \nAttrezzi nella stanza: ", this.b.toString());
 	}
 	
 	@Test
-	public void verificoToStringDiAModificato() {
+	void verificoToStringDiAModificato() {
 		a.impostaStanzaAdiacente("sud", new Stanza("c"));
 		a.addAttrezzo(new Attrezzo("spada", 7));
 		assertEquals("a\nUscite:  nord sud\nAttrezzi nella stanza: spada (7kg) ", this.a.toString());

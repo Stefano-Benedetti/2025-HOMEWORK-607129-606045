@@ -56,7 +56,7 @@ public class Partita {
 	 * Restituisce vero se e solo se la partita e' finita
 	 * @return vero se partita finita
 	 */
-	public boolean isFinita() {									//non è mai invocata
+	public boolean isFinita() {
 		return finita || this.vinta() || this.persa();
 	}
 
@@ -64,7 +64,7 @@ public class Partita {
 	 * Imposta la partita come finita
 	 *
 	 */
-	public void setFinita() {								//non è mai invocata
+	public void setFinita() {
 		this.finita = true;
 	}
 	
