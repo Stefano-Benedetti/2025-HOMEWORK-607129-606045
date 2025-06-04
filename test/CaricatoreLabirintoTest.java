@@ -27,7 +27,7 @@ class CaricatoreLabirintoTest {
 
 	private final String bilocale = 
 			"Abilitato: true\n"+
-			"Stanze: bilocale1, bilocale2\n"+
+			"Stanze: bilocale1 / bilocale2\n"+
 			"StanzeBuie: \n"+
 			"StanzeBloccate: \n"+
 			"StanzeMagiche: \n"+
