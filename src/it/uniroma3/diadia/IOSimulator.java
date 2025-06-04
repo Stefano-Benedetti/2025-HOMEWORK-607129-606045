@@ -1,36 +1,42 @@
 package it.uniroma3.diadia;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public class IOSimulator implements IO{
-	private String[] istruzioni;
-	private int indiceIstrDaEseguire;					//indice dell'istruzione che deve eseguire
-	private int indiceIstrDaInserire;
+	private List<String> istruzioni;
+	Iterator<String> it;
 	
-	public IOSimulator(int istrTotali) {
-		this.istruzioni=new String[istrTotali];
-		indiceIstrDaEseguire=0;
-		indiceIstrDaInserire=0;
+	public IOSimulator() {
+		this.istruzioni = new ArrayList<String>();
 	}
 	
 	public void setIstruzione(String istruzione) {
-		istruzioni[indiceIstrDaInserire]=istruzione;
-		indiceIstrDaInserire++;
+		istruzioni.add(istruzione);
 	}
 	
-	@Override
+
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
 	}
 	
-	@Override
+
 	public void mostraMessaggioNoInvio(String msg) {
 		System.out.print(msg);
 	}
 	
-	@Override
+	/*
+	 * legge le istruzioni prendendole dalla lista di istruzioni
+	 * l'iteratore se null viene inizializzato, altrimenti viene solo
+	 * incrementato, questo si può fare perchè durante la lettura la
+	 * lista delle istruzioni non viene modificata
+	 */
 	public String leggiRiga() {
-		String temp= istruzioni[indiceIstrDaEseguire];
-		indiceIstrDaEseguire++;
+		if(it==null)
+			it = istruzioni.iterator();
+		String temp = it.next();
 		this.mostraMessaggio(temp);
 		return temp;
 	}

@@ -8,6 +8,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.*;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
+import java.util.Scanner;
 
 class ComandoPrendiTest {
 
@@ -20,7 +21,7 @@ class ComandoPrendiTest {
 	void setUp() {
 		partita = new Partita();
 		cmd = new ComandoPrendi("osso");
-		io = new IOConsole();
+		io = new IOConsole(new Scanner(System.in));
 				
 	}
 	

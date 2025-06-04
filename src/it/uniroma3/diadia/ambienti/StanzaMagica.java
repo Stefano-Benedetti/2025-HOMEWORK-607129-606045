@@ -1,9 +1,10 @@
 package it.uniroma3.diadia.ambienti;
 
+import it.uniroma3.diadia.ConfiguraProprieta;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaMagica extends Stanza{
-	final static private int SOGLIA_MAGICA_DEFAULT = 3;
+	final static private int SOGLIA_MAGICA_DEFAULT = Integer.parseInt(ConfiguraProprieta.getSogliaMagica());
 	private int contatoreAttrezziPosati;
 	private int sogliaMagica;					//num attrezzi da posare per attivare il comportamento magico
 	
@@ -18,6 +19,10 @@ public class StanzaMagica extends Stanza{
 		this.sogliaMagica = soglia;
 	}
 	
+	@Override
+	public boolean isMagica(){
+    	return true;
+    }
 	
 	/*
 	 * Questo metodo non aggiunge effettivamente l'oggetto alla stanza ma fa

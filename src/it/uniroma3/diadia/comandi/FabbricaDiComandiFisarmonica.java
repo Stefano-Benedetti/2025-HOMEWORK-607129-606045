@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
 	
-	@Override
+
 	public Comando costruisciComando(String istruzione) {
 		Scanner scannerDiParole = new Scanner(istruzione);;
 		String nomeComando = null;
@@ -31,8 +31,12 @@ public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
 			comando = new ComandoFine();
 		else if (nomeComando.equals("guarda"))
 			comando = new ComandoGuarda();
+		else if (nomeComando.equals("borsa"))
+			comando = new ComandoBorsa();
 		else comando = new ComandoNonValido();
 			comando.setParametro(parametro);
+			
+		scannerDiParole.close();
 			
 		return comando;
 	}

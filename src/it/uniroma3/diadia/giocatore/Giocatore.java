@@ -1,14 +1,15 @@
 package it.uniroma3.diadia.giocatore;
 
+import it.uniroma3.diadia.ConfiguraProprieta;
+
 /**
  * Questa classe modella un giocatore.
  * 
- * @version 1.8
  */
 
 public class Giocatore {
 	
-	static final private int CFU_INIZIALI = 20;
+	static final private int CFU_INIZIALI = Integer.parseInt(ConfiguraProprieta.getCFUIniziali());
 
 	private int cfu;
 	private Borsa borsa;
@@ -17,8 +18,8 @@ public class Giocatore {
 	 * Crea un giocatore
 	 */
 	public Giocatore() {
-		this.cfu=CFU_INIZIALI;
-		this.borsa=new Borsa();
+		this.cfu = CFU_INIZIALI;
+		this.borsa = new Borsa();
 	}
 	
 	/**
@@ -26,7 +27,7 @@ public class Giocatore {
 	 * @param num valore che si vuole alla variabile di istanza cfu
 	 */
 	public void setCfu(int num) {
-		this.cfu=num;
+		this.cfu = num;
 	}
 	
 	/**

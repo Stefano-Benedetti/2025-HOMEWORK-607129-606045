@@ -4,8 +4,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaMagicaProtected extends StanzaProtected{
 	final static private int SOGLIA_MAGICA_DEFAULT = 3;
-	private int contatoreAttrezziPosati;
-	private int sogliaMagica;					//num attrezzi da posare per attivare il comportamento magico
+	protected int contatoreAttrezziPosati;
+	protected int sogliaMagica;					//num attrezzi da posare per attivare il comportamento magico
 	
 	
 	public StanzaMagicaProtected(String nome) {
@@ -18,23 +18,22 @@ public class StanzaMagicaProtected extends StanzaProtected{
 		this.sogliaMagica = soglia;
 	}
 	
+	@Override
+	public boolean isMagica(){
+    	return true;
+    }
 	
 	/*
-	 * Questo metodo aggiunge l'attrezzo facendo prima le modifiche 
-	 * necessarie. Grazie ai campi protected di StanzaProtected può
-	 * utilizzare numeroAttrezzi e attrezzi[] direttamente
+	 * Questo metodo non aggiunge effettivamente l'oggetto alla stanza ma fa
+	 * le modifiche necessarie prima di aggiungerlo. Per aggiungerlo effettivamente
+	 * utilizza il metodo addAttrezzo() definito nella superclasse Stanza.
 	 */
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		this.contatoreAttrezziPosati++;
-		if (this.contatoreAttrezziPosati > this.sogliaMagica)
+		if (this.contatoreAttrezziPosati>this.sogliaMagica)
 			attrezzo = this.modificaAttrezzo(attrezzo);
-		if (this.numeroAttrezzi<this.attrezzi.length) {
-			this.attrezzi[this.numeroAttrezzi] = attrezzo;
-			this.numeroAttrezzi++;
-			return true;
-		}
-		else return false;
+		return super.addAttrezzo(attrezzo);
 	}
 	
 	private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {

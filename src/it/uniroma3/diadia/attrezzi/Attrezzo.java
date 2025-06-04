@@ -9,7 +9,6 @@ import it.uniroma3.diadia.ambienti.Stanza;
  *
  * @author  docente di POO
  * @see Stanza
- * @version 1.8
  */
 public class Attrezzo {
 
@@ -41,6 +40,10 @@ public class Attrezzo {
 	public int getPeso() {
 		return this.peso;
 	}
+	
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
 
 	/**
 	 * Restituisce una rappresentazione stringa di questo attrezzo
@@ -48,6 +51,12 @@ public class Attrezzo {
 	 */
 	public String toString() {
 			return this.getNome()+" ("+this.getPeso()+"kg)";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Attrezzo att = (Attrezzo)obj;
+		return this.getNome().equals(att.getNome()) && this.getPeso()==att.getPeso();
 	}
 
 }

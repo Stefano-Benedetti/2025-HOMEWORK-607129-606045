@@ -8,12 +8,9 @@ import it.uniroma3.diadia.giocatore.Giocatore;
  *
  * @author  docente di POO
  * @see Stanza
- * @version 1.8
  */
 
 public class Partita {
-
-	//static final private int CFU_INIZIALI = 20;
 
 	private Stanza stanzaCorrente;
 	private boolean finita;
@@ -21,13 +18,30 @@ public class Partita {
 	private Giocatore giocatore;
 	
 	public Partita(){
-		this.labirinto=new Labirinto();
-		this.stanzaCorrente=labirinto.getStanzaIniziale();
-		this.giocatore=new Giocatore();
+		this.labirinto = new Labirinto();
+		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
+		this.giocatore = new Giocatore();
+		this.finita = false;
+	}
+	
+	public Partita(String file){
+		this.labirinto = new Labirinto(file);
+		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
+		this.giocatore = new Giocatore();
 		this.finita = false;
 	}
     
+	public Partita(Labirinto labirintoStyled){
+		this.labirinto = labirintoStyled;
+		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
+		this.giocatore = new Giocatore();
+		this.finita = false;
+	}
 
+	public void setLabirinto(Labirinto labirintoStyled) {
+		this.labirinto = labirintoStyled;
+	}
+	
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
 	}
@@ -41,7 +55,7 @@ public class Partita {
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente()== labirinto.getStanzaFinale();
+		return this.getStanzaCorrente() == this.labirinto.getStanzaFinale();
 	}
 	
 	/**
@@ -49,7 +63,7 @@ public class Partita {
 	 * @return vero se partita persa
 	 */
 	public boolean persa() {
-		return (giocatore.getCfu() == 0);
+		return this.giocatore.getCfu() == 0;
 	}
 	
 	/**
@@ -57,12 +71,11 @@ public class Partita {
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || this.vinta() || this.persa();
+		return this.finita || this.vinta() || this.persa();
 	}
 
 	/**
 	 * Imposta la partita come finita
-	 *
 	 */
 	public void setFinita() {
 		this.finita = true;

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
+import static it.uniroma3.diadia.ambienti.Direzione.*;
 
 
 class PartitaTest {
@@ -31,14 +32,14 @@ class PartitaTest {
 	
 	@Test
 	void TestVittoria() {
-		Stanza stanzaFinale=partita.getStanzaCorrente().getStanzaAdiacente("nord");
+		Stanza stanzaFinale=partita.getStanzaCorrente().getStanzaAdiacente(nord);
 		partita.setStanzaCorrente(stanzaFinale);
 		assertTrue(partita.vinta());
 	}
 	
 	@Test
 	void TestNoVittoria() {
-		Stanza stanza=partita.getStanzaCorrente().getStanzaAdiacente("sud");
+		Stanza stanza=partita.getStanzaCorrente().getStanzaAdiacente(sud);
 		partita.setStanzaCorrente(stanza);
 		assertFalse(partita.vinta());
 	}
@@ -47,7 +48,7 @@ class PartitaTest {
 	//test di isFinita()
 	@Test
 	void FineDopoVittoria() {
-		Stanza stanzaFinale=partita.getStanzaCorrente().getStanzaAdiacente("nord");
+		Stanza stanzaFinale=partita.getStanzaCorrente().getStanzaAdiacente(nord);
 		partita.setStanzaCorrente(stanzaFinale);
 		assertTrue(partita.isFinita());
 	}

@@ -1,0 +1,33 @@
+Abilitato: true
+Stanze: Ingresso / Salone / Cucina
+StanzeBuie: 
+StanzeBloccate: 
+StanzeMagiche: 
+Inizio: Ingresso
+Finale: Cucina
+Attrezzi: biscotto 0 Salone / telecomando 0 Salone / zerbino 2 Ingresso
+Personaggi: strega Ingresso Ladrolina -Non fare caso a me, sto solo rubando.- / cane Salone Molly palla 1 biscotto -Bau bau! (Fammi entrare in cucina)-
+Uscite: Ingresso nord Salone / Salone sud Ingresso / Salone est Cucina / Cucina ovest Salone
+
+
+---SINTASSI DI QUESTO FILE---
+
+Separare i vari oggetti con " / " (considerando anche gli spazi)
+
+Abilitato specifica se va caricato questo labirinto (true) o quello default di DiaDia (false).
+
+Stanza o StanzaMagica: nome
+
+StanzaBloccata: nome direzione AttrChiave
+
+StanzaInizio: NomeStanzaIniziale
+
+StanzaFine: NomeStanzaFinale
+
+Attrezzo: nome peso stanza
+
+Strega: strega stanza nome presentazione
+Cane: cane stanza nome AttrInBocca PesoAttr NomeAttrGustoso -presentazione-
+Mago: mago stanza nome Attr PesoAttr -presentazione-
+
+Uscita: StanzaDa Direzione StanzaA

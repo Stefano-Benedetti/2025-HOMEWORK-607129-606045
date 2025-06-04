@@ -8,28 +8,21 @@ import it.uniroma3.diadia.IO;
  * Classe che gestisce il comando guarda dando le informazioni sulla stanza corrente e
  * sullo stato della partita.
  */
-public class ComandoGuarda implements Comando{
-		
-	public ComandoGuarda() {}
+public class ComandoGuarda extends AbstractComando implements Comando{
 	
-	@Override
+
 	public void esegui(Partita partita, IO io) {
-		io.mostraMessaggio("\n"+partita.getStanzaCorrente().toString());
+		io.mostraMessaggio("\n"+partita.getStanzaCorrente().getDescrizione());
 		io.mostraMessaggio("CFU: "+partita.getGiocatore().getCfu());
-		io.mostraMessaggio(partita.getGiocatore().getBorsa().toString()+"\n");	
+		io.mostraMessaggio(partita.getGiocatore().getBorsa().getDescrizione()+"\n");	
 	}
 	
-	@Override
-	public void setParametro(String parametro) {
-		return;
-	}
-	
-	@Override
+
 	public String getNome() {
 		return "guarda";
 	}
 	
-	@Override
+
 	public String getParametro() {
 		return null;
 	}

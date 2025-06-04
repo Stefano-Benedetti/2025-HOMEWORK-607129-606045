@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import static it.uniroma3.diadia.ambienti.Direzione.*;
 
 
 class StanzaTest {
@@ -15,7 +16,7 @@ class StanzaTest {
 	void setUp() {
 		this.a=new Stanza("a");
 		this.b=new Stanza("b");
-		this.a.impostaStanzaAdiacente("nord", this.b);
+		this.a.impostaStanzaAdiacente(nord, this.b);
 		
 		this.spada=new Attrezzo("spada", 7);		
 		
@@ -24,19 +25,19 @@ class StanzaTest {
 	//test di impostaStanzaAdiacente()
 	@Test
 	void stanzaNordDeveEssereb() {
-		assertEquals(this.b, this.a.getStanzaAdiacente("nord"));
+		assertEquals(this.b, this.a.getStanzaAdiacente(nord));
 	}
 	
 	@Test
 	void stanzaSudDeveEssereNull() {
-		assertNull(this.a.getStanzaAdiacente("sud"));
+		assertNull(this.a.getStanzaAdiacente(sud));
 	}
 	
 	@Test
 	void modificandoLaStanzaNordDeveRestituireLaNuovaStanzaNord() {
 		Stanza c=new Stanza("c");
-		a.impostaStanzaAdiacente("nord", c);
-		assertEquals(c, this.a.getStanzaAdiacente("nord"));
+		a.impostaStanzaAdiacente(nord, c);
+		assertEquals(c, this.a.getStanzaAdiacente(nord));
 	}
 	
 	
@@ -49,7 +50,7 @@ class StanzaTest {
 	@Test
 	void ArrayAttrezziPienoDeveTornareFalse() {
 		for(int i=0; i<10; i++)
-			this.a.addAttrezzo(new Attrezzo("spada", 7));
+			this.a.addAttrezzo(new Attrezzo("spada"+i, 7)); //i nomi degli attrezzi devono essere tutti diversi
 		assertFalse(this.a.addAttrezzo(new Attrezzo("ascia", 8)));
 	}
 	
@@ -67,7 +68,7 @@ class StanzaTest {
 	
 	@Test
 	void verificoToStringDiAModificato() {
-		a.impostaStanzaAdiacente("sud", new Stanza("c"));
+		a.impostaStanzaAdiacente(sud, new Stanza("c"));
 		a.addAttrezzo(new Attrezzo("spada", 7));
 		assertEquals("a\nUscite:  nord sud\nAttrezzi nella stanza: spada (7kg) ", this.a.toString());
 	}

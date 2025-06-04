@@ -26,7 +26,7 @@ class StanzaBuiaTest {
 	@Test
 	void testConLanterna() {
 		buia.addAttrezzo(lanterna);
-		assertEquals("Buia\nUscite: \nAttrezzi nella stanza: lanterna (1kg) ",buia.toString());
+		assertEquals("Buia\nUscite: \nAttrezzi nella stanza: lanterna (1kg) ",buia.getDescrizione());
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ class StanzaBuiaTest {
 		Attrezzo sasso = new Attrezzo("sasso",10);
 		buia.addAttrezzo(sasso);
 		buia.addAttrezzo(lanterna);
-		assertEquals("Buia\nUscite: \nAttrezzi nella stanza: sasso (10kg) lanterna (1kg) ",buia.toString());
+		assertEquals("Buia\nUscite: \nAttrezzi nella stanza: sasso (10kg) lanterna (1kg) ",buia.getDescrizione());
 	}
 	
 }

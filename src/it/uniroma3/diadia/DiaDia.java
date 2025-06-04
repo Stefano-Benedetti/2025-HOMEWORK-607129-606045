@@ -1,8 +1,12 @@
 package it.uniroma3.diadia;
 
 
-import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
+//import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
+import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.comandi.Comando;
+import java.io.*;
+import java.util.Scanner;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -13,30 +17,29 @@ import it.uniroma3.diadia.comandi.Comando;
  * @author  docente di POO 
  *         (da un'idea di Michael Kolling and David J. Barnes) 
  *          
- * @version 1.8
  */
 
 public class DiaDia {
 
-	static final private String MESSAGGIO_BENVENUTO = ""+
-			"Ti trovi nell'Università, ma oggi è diversa dal solito...\n" +
-			"Meglio andare al più presto in biblioteca a studiare. Ma dov'è?\n"+
-			"I locali sono popolati da strani personaggi, " +
-			"alcuni amici, altri... chissà!\n"+
-			"Ci sono attrezzi che potrebbero servirti nell'impresa:\n"+
-			"puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n" +
-			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
-			"Per conoscere le istruzioni usa il comando 'aiuto'.\n";
-	
+	private static String MESSAGGIO_BENVENUTO = ConfiguraProprieta.getMessaggioBenvenuto();	
 	
 	private Partita partita;
 	private IO io;
 
-	public DiaDia(IO io) {
+	public DiaDia(IO io) throws IOException{
 		this.partita = new Partita();
 		this.io = io;
 	}
 	
+	public DiaDia(IO io, String nomeFile) throws IOException{
+		this.partita = new Partita(nomeFile);
+		this.io = io;
+	}
+	
+	public DiaDia(Labirinto labirintoStyled, IO io) throws IOException{
+		this.partita = new Partita(labirintoStyled);
+		this.io = io;
+	}
 	/**
 	 * Avvia il gioco mostrando messaggio di benvenuto e prendendo volta
 	 * per volta le istruzioni (con IOConsole).
@@ -59,7 +62,8 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica();
+		//FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica();
+		FabbricaDiComandiRiflessiva factory = new FabbricaDiComandiRiflessiva();
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		
 		comandoDaEseguire.esegui(this.partita, this.io);
@@ -74,10 +78,12 @@ public class DiaDia {
 
 	
 
-	public static void main(String[] argc) {
-		IO io = new IOConsole();
-		DiaDia gioco = new DiaDia(io);
-		gioco.gioca();
+	public static void main(String[] argc) throws IOException{
+		try (Scanner scannerDiLinee = new Scanner(System.in)) {
+			IO io = new IOConsole(scannerDiLinee);
+			DiaDia gioco = new DiaDia(io, "Labirinto.txt");
+			gioco.gioca();
+		}	
 	}
 	
 }

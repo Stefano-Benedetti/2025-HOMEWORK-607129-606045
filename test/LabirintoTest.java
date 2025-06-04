@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
+import static it.uniroma3.diadia.ambienti.Direzione.*;
 
 class LabirintoTest {
 	
@@ -36,6 +37,6 @@ class LabirintoTest {
 		
 	@Test
 	void VerificaNordDiAtrio() {
-		assertEquals("Biblioteca",labirinto.getStanzaIniziale().getStanzaAdiacente("nord").getNome());
+		assertEquals("Biblioteca",labirinto.getStanzaIniziale().getStanzaAdiacente(nord).getNome());
 	}
 }
